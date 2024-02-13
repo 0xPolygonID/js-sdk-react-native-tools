@@ -1,14 +1,11 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Linking, SafeAreaView} from 'react-native';
 
 import {StyleSheet, View, Text} from 'react-native';
 import {Camera, CameraPermissionStatus} from 'react-native-vision-camera';
 import {CONTENT_SPACING, SAFE_AREA_PADDING} from './constants';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-
-// @ts-ignore
-export function PermissionsPage({navigation}): React.ReactElement {
+export function PermissionsPage({navigation}: any): React.ReactElement {
   const [cameraPermissionStatus, setCameraPermissionStatus] =
     useState<CameraPermissionStatus>('not-determined');
 
@@ -26,9 +23,8 @@ export function PermissionsPage({navigation}): React.ReactElement {
   }, [cameraPermissionStatus, navigation]);
 
   const backHome = async () => {
-    // console.log(await webCont.witnessCalculationWebView('ss'));
-    navigation.navigate('HomePage')
-  }
+    navigation.navigate('HomePage');
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>

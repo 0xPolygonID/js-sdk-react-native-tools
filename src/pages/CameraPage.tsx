@@ -1,4 +1,4 @@
-import {NavigationContainer, useIsFocused} from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 import React, {useEffect, useRef, useState} from 'react';
 import {
   Camera,
@@ -8,7 +8,7 @@ import {
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import {useIsForeground} from '../hooks/useIsForegraund';
 
-export function CameraPage({navigation}) {
+export function CameraPage({navigation}: any) {
   const isFocussed = useIsFocused();
   const isForeground = useIsForeground();
   const [isActive, setIsActive] = useState(isFocussed && isForeground);
@@ -59,11 +59,6 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    // backgroundColor: 'black',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // paddingBottom: 100,
-    // verticalAlign: '',
   },
   camera: {
     top: 100,

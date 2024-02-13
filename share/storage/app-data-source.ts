@@ -13,7 +13,6 @@ export class AppDataSource<Type> implements IDataSource<Type> {
   }
 
   async save(key: string, value: Type, keyName = 'id'): Promise<void> {
-    console.log("AppDataSource save", this._appStorageKey, key, keyName);
     if (appStorage) {
       const data = await appStorage.getItem(this._appStorageKey);
       const items = JSON.parse(data) || [];
@@ -30,7 +29,6 @@ export class AppDataSource<Type> implements IDataSource<Type> {
   }
 
   async get(key: string, keyName = 'id'): Promise<Type | undefined> {
-    console.log('AppDataSource get: ', {key, keyName});
     const data = await appStorage.getItem(this._appStorageKey);
     const parsedData = data ? (JSON.parse(data) as Type[]) : [];
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -39,8 +37,6 @@ export class AppDataSource<Type> implements IDataSource<Type> {
   }
 
   async load(): Promise<Type[]> {
-    console.log('AppDataSource load');
-
     const data = await appStorage.getItem(this._appStorageKey);
     return data && JSON.parse(data);
   }

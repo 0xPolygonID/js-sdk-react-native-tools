@@ -1,17 +1,18 @@
 import * as WebAssembly from 'react-native-webassembly';
-import { fromByteArray } from 'react-native-quick-base64';
+import {fromByteArray} from 'react-native-quick-base64';
 let instance: any;
 let module: any;
-export const witnessCalculationNative = async (binary: Uint8Array, inputs: any): Promise<string> => {
+export const witnessCalculationNative = async (
+  binary: Uint8Array,
+  inputs: any,
+): Promise<string> => {
   const witnessCalculator = await witnessBuilder(binary);
   const calcResult = await witnessCalculator.calculateWTNSBin(inputs, 0);
   return fromByteArray(calcResult);
-}
+};
 export async function witnessBuilder(code: Uint8Array, options?: any) {
   options = options || {};
 
-  // let instance: any;
-  // let module: any;
   try {
     module = await WebAssembly.instantiate(code, {
       runtime: {

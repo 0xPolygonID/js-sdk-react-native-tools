@@ -19,4 +19,3 @@ export const defaultEthConnectionConfig = [
 ];
 
 export const INIT = 'Init';
-

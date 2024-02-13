@@ -14,10 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		F37A617D2B017CDD00369EAA /* librapidsnark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F37A61792B017CDD00369EAA /* librapidsnark.a */; };
-		F37A617E2B017CDD00369EAA /* libfr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F37A617A2B017CDD00369EAA /* libfr.a */; };
-		F37A617F2B017CDD00369EAA /* libfq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F37A617B2B017CDD00369EAA /* libfq.a */; };
-		F37A61802B017CDD00369EAA /* libgmp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F37A617C2B017CDD00369EAA /* libgmp.a */; };
+		F350CF422B4C11F60060ABAD /* Rapidsnark.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A34EFF2B47576200FD40A6 /* Rapidsnark.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +49,15 @@
 		F37A617A2B017CDD00369EAA /* libfr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfr.a; path = "../../react-native-rapidsnark/ios/libfr.a"; sourceTree = "<group>"; };
 		F37A617B2B017CDD00369EAA /* libfq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfq.a; path = "../../react-native-rapidsnark/ios/libfq.a"; sourceTree = "<group>"; };
 		F37A617C2B017CDD00369EAA /* libgmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmp.a; path = "../../react-native-rapidsnark/ios/libgmp.a"; sourceTree = "<group>"; };
+		F3A34EFF2B47576200FD40A6 /* Rapidsnark.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Rapidsnark.xcframework; path = "../node_modules/@iden3/react-native-rapidsnark/ios/Frameworks/Rapidsnark.xcframework"; sourceTree = "<group>"; };
+		F3A34F022B47595E00FD40A6 /* libfq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfq.a; path = "../../react-native-rapidsnark/ios_xcframework/libs_ios/libfq.a"; sourceTree = "<group>"; };
+		F3A34F032B47595E00FD40A6 /* libfr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfr.a; path = "../../react-native-rapidsnark/ios_xcframework/libs_ios/libfr.a"; sourceTree = "<group>"; };
+		F3A34F042B47595E00FD40A6 /* libgmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmp.a; path = "../../react-native-rapidsnark/ios_xcframework/libs_ios/libgmp.a"; sourceTree = "<group>"; };
+		F3A34F052B47595E00FD40A6 /* librapidsnark.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librapidsnark.a; path = "../../react-native-rapidsnark/ios_xcframework/libs_ios/librapidsnark.a"; sourceTree = "<group>"; };
+		F3A34F062B47595E00FD40A6 /* libgroth16_verify.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgroth16_verify.a; path = "../../react-native-rapidsnark/ios_xcframework/libs_ios/libgroth16_verify.a"; sourceTree = "<group>"; };
+		F3A34F0D2B4759D500FD40A6 /* librapidsnarkmerged.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librapidsnarkmerged.a; path = "../node_modules/@iden3/react-native-rapidsnark/ios/Frameworks/Rapidsnark.xcframework/ios-arm64/librapidsnarkmerged.a"; sourceTree = "<group>"; };
+		F3A34F162B475DBD00FD40A6 /* librapidsnarkmerged.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librapidsnarkmerged.a; path = "../../react-native-rapidsnark/ios/Frameworks/Rapidsnark.xcframework/ios-arm64/librapidsnarkmerged.a"; sourceTree = "<group>"; };
+		F3A34F182B48076100FD40A6 /* Frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Frameworks; path = "../../react-native-rapidsnark/ios/Frameworks"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F37A617D2B017CDD00369EAA /* librapidsnark.a in Frameworks */,
-				F37A617E2B017CDD00369EAA /* libfr.a in Frameworks */,
-				F37A617F2B017CDD00369EAA /* libfq.a in Frameworks */,
-				F37A61802B017CDD00369EAA /* libgmp.a in Frameworks */,
+				F350CF422B4C11F60060ABAD /* Rapidsnark.xcframework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-jsSdkReactNativeTools.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +114,15 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3A34F182B48076100FD40A6 /* Frameworks */,
+				F3A34F0D2B4759D500FD40A6 /* librapidsnarkmerged.a */,
+				F3A34F162B475DBD00FD40A6 /* librapidsnarkmerged.a */,
+				F3A34F022B47595E00FD40A6 /* libfq.a */,
+				F3A34F032B47595E00FD40A6 /* libfr.a */,
+				F3A34F042B47595E00FD40A6 /* libgmp.a */,
+				F3A34F062B47595E00FD40A6 /* libgroth16_verify.a */,
+				F3A34F052B47595E00FD40A6 /* librapidsnark.a */,
+				F3A34EFF2B47576200FD40A6 /* Rapidsnark.xcframework */,
 				F37A617B2B017CDD00369EAA /* libfq.a */,
 				F37A617A2B017CDD00369EAA /* libfr.a */,
 				F37A617C2B017CDD00369EAA /* libgmp.a */,
@@ -504,12 +516,25 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NFR3CCBV87;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/../../node_modules/@iden3/react-native-rapidsnark/ios/Frameworks\"",
+					"\"${PODS_ROOT}/Flipper-DoubleConversion/Frameworks\"",
+					"\"${PODS_ROOT}/Flipper-Glog/Frameworks\"",
+					"\"${PODS_ROOT}/OpenSSL-Universal/Frameworks\"",
+					"\"${PODS_ROOT}/hermes-engine/destroot/Library/Frameworks/universal\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built\"",
+				);
 				INFOPLIST_FILE = jsSdkReactNativeTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/CocoaAsyncSocket\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/DoubleConversion\"",
@@ -568,7 +593,6 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-worklets-core\"",
 					"\"${TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}\"",
 					/usr/lib/swift,
-					"../../react-native-rapidsnark/ios",
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
@@ -576,7 +600,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.jsSdkReactNativeTools1;
 				PRODUCT_NAME = jsSdkReactNativeTools;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -603,7 +627,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.jsSdkReactNativeTools1;
 				PRODUCT_NAME = jsSdkReactNativeTools;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

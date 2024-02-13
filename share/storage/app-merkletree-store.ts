@@ -44,7 +44,6 @@ export class AppMerkleTreeLocalStorage implements IMerkleTreeStorage {
     console.log(meta);
     if (meta) {
       // eslint-disable-next-line no-debugger
-      // debugger;
       const metaInfo: IdentityMerkleTreeMetaInformation[] = JSON.parse(meta);
       const identityMetaInfo = metaInfo.filter(
         m => m.identifier === identifier,
@@ -63,7 +62,7 @@ export class AppMerkleTreeLocalStorage implements IMerkleTreeStorage {
       AppMerkleTreeLocalStorage.storageKeyMeta,
       JSON.stringify(treesMeta),
     );
-    console.log("createIdentityMerkleTrees return");
+    console.log('createIdentityMerkleTrees return');
 
     return treesMeta;
   }
@@ -71,7 +70,6 @@ export class AppMerkleTreeLocalStorage implements IMerkleTreeStorage {
   async getIdentityMerkleTreesInfo(
     identifier: string,
   ): Promise<IdentityMerkleTreeMetaInformation[]> {
-    console.log("getIdentityMerkleTreesInfo");
 
     const meta = await appStorage.getItem(
       AppMerkleTreeLocalStorage.storageKeyMeta,
@@ -98,7 +96,6 @@ export class AppMerkleTreeLocalStorage implements IMerkleTreeStorage {
       throw err;
     }
 
-    console.log("getMerkleTreeByIdentifierAndType");
     const metaInfo: IdentityMerkleTreeMetaInformation[] = JSON.parse(meta);
     const resultMeta = metaInfo.filter(
       m => m.identifier === identifier && m.type === mtType,
@@ -147,7 +144,6 @@ export class AppMerkleTreeLocalStorage implements IMerkleTreeStorage {
 
     await tree.add(hindex, hvalue);
     console.log('addToMerkleTree f]add');
-
   }
 
   async bindMerkleTreeToNewIdentifier(
@@ -162,9 +158,7 @@ export class AppMerkleTreeLocalStorage implements IMerkleTreeStorage {
         `Merkle tree meta not found for identifier ${oldIdentifier}`,
       );
     }
-    console.log("bindMerkleTreeToNewIdentifier");
     const metaInfo: IdentityMerkleTreeMetaInformation[] = JSON.parse(meta);
-    console.log("bindMerkleTreeToNewIdentifier w");
 
     const treesMeta = metaInfo
       .filter(m => m.identifier === oldIdentifier)

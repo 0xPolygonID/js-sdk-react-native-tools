@@ -23,7 +23,9 @@ export function HomePage({route, navigation}: any) {
   const [isPresentCircuits, setIsPresentCircuits] = useState(false);
   const [isInited, setIsInited] = useState(false);
   const [credentials, setCredentials] = useState<W3CCredential[]>([]);
-  const [circuitsUrl, setCircuitsUrl] = useState<string>('http://192.168.0.100:3000');
+  const [circuitsUrl, setCircuitsUrl] = useState<string>(
+    'http://192.168.0.100:3000',
+  );
   const webViewContext = useContext(WebViewContext);
 
   const [keys, setKeys] = useState<string[]>([]);
@@ -38,23 +40,22 @@ export function HomePage({route, navigation}: any) {
   useEffect(() => {
     console.log('init HomePage');
     getAllDataFromStorage().then();
-    checkCircuits().then((res) => {
-      setIsPresentCircuits(res)
+    checkCircuits().then(res => {
+      setIsPresentCircuits(res);
     });
-    getCreds().then((creds) => {
+    getCreds().then(creds => {
       setCredentials(creds);
     });
-    checkIdentity().then((res) => {
+    checkIdentity().then(res => {
       setIsPresentIdentity(res);
     });
     setIsInited(AppService.isInited());
     getAllDataFromStorage();
-    // checkCircuits();
   }, [isPresentIdentity, isInited]);
 
   const getCreds = async () => {
     try {
-      const {credWallet, dataStorage} = AppService.getExtensionServiceInstance();
+      const {credWallet} = AppService.getExtensionServiceInstance();
       const creds = await credWallet.list();
       return creds;
     } catch (e) {
@@ -71,20 +72,21 @@ export function HomePage({route, navigation}: any) {
   };
   const checkIdentity = async (): Promise<boolean> => {
     const {dataStorage} = AppService.getExtensionServiceInstance() || {};
-    if(!dataStorage) return false;
+    if (!dataStorage) return false;
     const identities = await dataStorage.identity.getAllIdentities();
     return identities?.length > 0;
   };
   const initWebViewWitness = async () => {
     console.time('init sdk');
     setIsProcessing(true);
-    await AppService.init(circuitsUrl, webViewContext.witnessCalculationWebView);
+    await AppService.init(
+      circuitsUrl,
+      webViewContext.witnessCalculationWebView,
+    );
     console.timeEnd('init sdk');
     setIsInited(true);
     setIsProcessing(false);
   };
-
-
   const initNativeWitness = async () => {
     console.time('init sdk');
     setIsProcessing(true);
@@ -110,7 +112,6 @@ export function HomePage({route, navigation}: any) {
     const isPresentCircuit = await CircuitStorageInstance.checkCircuits();
     setIsPresentCircuits(isPresentCircuit);
     return isPresentCircuit;
-
   };
   const loadCircuits = async () => {
     try {
@@ -165,40 +166,51 @@ export function HomePage({route, navigation}: any) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>HOME PAGE {`${isProcessing ? '-----LOADING-----': ''}`}</Text>
+      <Text>HOME PAGE {`${isProcessing ? '-----LOADING-----' : ''}`}</Text>
       <Text>{message}</Text>
-      {
-          !isPresentCircuits && <Button
-            title={'check circuits in storage'}
-            onPress={() => checkCircuits()}></Button>
-      }
+      {!isPresentCircuits && (
+        <Button
+          title={'check circuits in storage'}
+          onPress={() => checkCircuits()}></Button>
+      )}
       <Text>{isInited ? 'INITED' : 'NOT READY'}</Text>
-      {isPresentCircuits && !isInited && <Button title={'init SDK WebView Witness'} onPress={() => initWebViewWitness()}></Button>}
-      {isPresentCircuits && !isInited && <Button title={'init SDK Native Witness'} onPress={() => initNativeWitness()}></Button>}
-      {
-        !isPresentIdentity && isInited && <Button title={'Create identity'} onPress={() => createIdentity()}></Button>
-      }
+      {isPresentCircuits && !isInited && (
+        <Button
+          title={'init SDK WebView Witness'}
+          onPress={() => initWebViewWitness()}></Button>
+      )}
+      {isPresentCircuits && !isInited && (
+        <Button
+          title={'init SDK Native Witness'}
+          onPress={() => initNativeWitness()}></Button>
+      )}
+      {!isPresentIdentity && isInited && (
+        <Button
+          title={'Create identity'}
+          onPress={() => createIdentity()}></Button>
+      )}
 
-      {
-        !isPresentCircuits &&
-          <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-            <TextInput
-              style={{height: 40, borderColor: 'gray', borderWidth: 1, flex: 1}}
-              placeholder="Type here storage key"
-              onChangeText={newText => setCircuitsUrl(newText)}
-              defaultValue={circuitsUrl}
-            />
-            <Button
-              title="Load circuits"
-              onPress={() => loadCircuits()}
-            />
-          </View>
-      }
+      {!isPresentCircuits && (
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <TextInput
+            style={{height: 40, borderColor: 'gray', borderWidth: 1, flex: 1}}
+            placeholder="Type here storage key"
+            onChangeText={newText => setCircuitsUrl(newText)}
+            defaultValue={circuitsUrl}
+          />
+          <Button title="Load circuits" onPress={() => loadCircuits()} />
+        </View>
+      )}
 
       {isPresentCircuits ? (
         <Text>Circuits present</Text>
       ) : (
-          <Text>Circuits absent</Text>
+        <Text>Circuits absent</Text>
       )}
       <Text>----------------CREDENTIALS----------------------</Text>
       {credentials.map((cred, i) => (
@@ -240,18 +252,17 @@ export function HomePage({route, navigation}: any) {
         <Text>--------------------------------------</Text>
 
         <ScrollView style={{marginBottom: 40, flex: 1}}>
-          {
-            keys.map((item, i) => (<Text
-                key={item+i}
-                style={styles.item}
-                onPress={() => {
-                  setText(item);
-                }}>
+          {keys.map((item, i) => (
+            <Text
+              key={item + i}
+              style={styles.item}
+              onPress={() => {
+                setText(item);
+              }}>
               {item}
-            </Text>))
-          }
+            </Text>
+          ))}
         </ScrollView>
-
       </View>
       <View style={styles.rightButtonRow}>
         <Button title={'open Camera'} onPress={() => openCamera()}></Button>
@@ -273,7 +284,6 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    // right: SAFE_AREA_PADDING.paddingRight,
     bottom: SAFE_AREA_PADDING.paddingBottom,
   },
 });

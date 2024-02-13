@@ -5,7 +5,6 @@ export class AppStoragePrivateKeyStore implements AbstractPrivateKeyStore {
   static readonly storageKey = 'keystore';
 
   async get(args: {alias: string}): Promise<string> {
-    console.log('AppStoragePrivateKeyStore get');
     const dataStr = await appStorage.getItem(
       AppStoragePrivateKeyStore.storageKey,
     );
@@ -21,8 +20,6 @@ export class AppStoragePrivateKeyStore implements AbstractPrivateKeyStore {
   }
 
   async importKey(args: {alias: string; key: string}): Promise<void> {
-    console.log('AppStoragePrivateKeyStore importKey');
-
     const dataStr = await appStorage.getItem(
       AppStoragePrivateKeyStore.storageKey,
     );
@@ -31,11 +28,11 @@ export class AppStoragePrivateKeyStore implements AbstractPrivateKeyStore {
       data = JSON.parse(dataStr);
     }
 
-    const index = data.findIndex((d: { id: string }) => d.id === args.alias);
+    const index = data.findIndex((d: {id: string}) => d.id === args.alias);
     if (index > -1) {
       data[index].value = args.key;
     } else {
-      data.push({ id: args.alias, value: args.key });
+      data.push({id: args.alias, value: args.key});
     }
 
     await appStorage.setItem(

@@ -59,22 +59,23 @@ export class AppService {
       credWallet,
       circuitStorage,
       new EthStateStorage(defaultEthConnectionConfig[0]),
-      {ipfsGatewayURL: 'https://ipfs.io', prover: new ReactNativeZKProver(circuitStorage, witnessCalculator)},
+      {
+        ipfsGatewayURL: 'https://ipfs.io',
+        prover: new ReactNativeZKProver(circuitStorage, witnessCalculator),
+      },
     );
     const provingMethodGroth16AuthV2Instance: ProvingMethod =
-        new ProvingMethodGroth16AuthV2(
-            new ProvingMethodAlg(
-                proving.provingMethodGroth16AuthV2Instance.alg,
-                proving.provingMethodGroth16AuthV2Instance.circuitId,
-            ),
-            witnessCalculator
-        );
+      new ProvingMethodGroth16AuthV2(
+        new ProvingMethodAlg(
+          proving.provingMethodGroth16AuthV2Instance.alg,
+          proving.provingMethodGroth16AuthV2Instance.circuitId,
+        ),
+        witnessCalculator,
+      );
     await proving.registerProvingMethod(
       proving.provingMethodGroth16AuthV2Instance.methodAlg,
       () => provingMethodGroth16AuthV2Instance,
     );
-
-
     let packageMgr = await AppService.getPackageMgr(
       await circuitStorage.loadCircuitData(CircuitId.AuthV2),
       proofService.generateAuthV2Inputs.bind(proofService),
@@ -84,15 +85,15 @@ export class AppService {
     let authHandler = new AuthHandler(packageMgr, proofService);
 
     // if (!this.instanceES) {
-      this.instanceES = {
-        packageMgr,
-        proofService,
-        credWallet,
-        wallet,
-        dataStorage,
-        authHandler,
-        status: INIT,
-      };
+    this.instanceES = {
+      packageMgr,
+      proofService,
+      credWallet,
+      wallet,
+      dataStorage,
+      authHandler,
+      status: INIT,
+    };
     // }
     console.log('---App services has been initialized');
     this.isInit = true;

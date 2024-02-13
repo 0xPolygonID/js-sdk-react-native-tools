@@ -1,9 +1,9 @@
 import {core} from '@0xpolygonid/js-sdk';
-import {ProvingMethod, ZKProof, ProvingMethodAlg, proving} from '@iden3/js-jwz';
+import {ProvingMethod, ZKProof, ProvingMethodAlg} from '@iden3/js-jwz';
 import {newHashFromString, Hash} from '@iden3/js-merkletree';
-import {reactNativeProve} from './prove';
+import {reactNativeGroth16Prover} from './prove';
+import {verifyGroth16} from './verify';
 
-// // AuthV2PubSignals auth.circom public signals
 const Id = core.Id;
 
 export interface AuthV2PubSignals {
@@ -13,11 +13,10 @@ export interface AuthV2PubSignals {
 }
 
 export class ProvingMethodGroth16AuthV2 implements ProvingMethod {
-  // private static readonly curveName = 'bn128';
-
-  constructor(public readonly methodAlg: ProvingMethodAlg, public witnessCalculator: Function) {
-    console.log('ProvingMethodGroth16AuthV2 sss');
-  }
+  constructor(
+    public readonly methodAlg: ProvingMethodAlg,
+    public witnessCalculator: Function,
+  ) {}
 
   get alg(): string {
     return this.methodAlg.alg;
@@ -32,16 +31,13 @@ export class ProvingMethodGroth16AuthV2 implements ProvingMethod {
     proof: ZKProof,
     verificationKey: Uint8Array,
   ): Promise<boolean> {
-    return true;
-    // const verificationResult = await verify<AuthV2PubSignals>(
-    //   messageHash,
-    //   proof,
-    //   verificationKey,
-    //   this.unmarshall,
-    // );
-    // // await this.terminateCurve();
-    //
-    // return verificationResult;
+    const verificationResult = await verifyGroth16<AuthV2PubSignals>(
+      messageHash,
+      proof,
+      verificationKey,
+      this.unmarshall,
+    );
+    return verificationResult;
   }
 
   async prove(
@@ -49,7 +45,12 @@ export class ProvingMethodGroth16AuthV2 implements ProvingMethod {
     provingKey: Uint8Array,
     wasm: Uint8Array,
   ): Promise<ZKProof> {
-    const zkProof = await reactNativeProve(inputs, provingKey, wasm, this.witnessCalculator);
+    const zkProof = await reactNativeGroth16Prover(
+      inputs,
+      provingKey,
+      wasm,
+      this.witnessCalculator,
+    );
 
     return zkProof;
   }
@@ -70,11 +71,3 @@ export class ProvingMethodGroth16AuthV2 implements ProvingMethod {
     };
   }
 }
-
-// export const provingMethodGroth16AuthV2Instance: ProvingMethod =
-//   new ProvingMethodGroth16AuthV2(
-//     new ProvingMethodAlg(
-//       proving.provingMethodGroth16AuthV2Instance.alg,
-//       proving.provingMethodGroth16AuthV2Instance.circuitId,
-//     ),
-//   );
