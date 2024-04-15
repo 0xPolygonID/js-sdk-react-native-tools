@@ -1,9 +1,8 @@
-import {NativeModules} from 'react-native';
 import {byteDecoder} from '@0xpolygonid/js-sdk';
 import {ZKProof} from '@iden3/js-jwz';
 import {fromByteArray} from 'react-native-quick-base64';
+import {groth16Prove} from '@iden3/react-native-rapidsnark';
 
-const rapidsnark = NativeModules.Rapidsnark;
 export const reactNativeGroth16Prover = async (
   inputs: Uint8Array,
   provingKey: Uint8Array,
@@ -18,7 +17,7 @@ export const reactNativeGroth16Prover = async (
 
   console.time('rapidsnark');
 
-  const {proof, pub_signals} = await rapidsnark.groth16_prover(
+  const {proof, pub_signals} = await groth16Prove(
     fromByteArray(provingKey),
     calcResult,
   );

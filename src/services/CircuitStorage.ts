@@ -36,9 +36,14 @@ export class CircuitStorageInstance {
     const auth_w = customFetch('/AuthV2/circuit.wasm');
     const mtp_w = customFetch('/credentialAtomicQueryMTPV2/circuit.wasm');
     const sig_w = customFetch('/credentialAtomicQuerySigV2/circuit.wasm');
+    const v3_w = customFetch('/credentialAtomicQueryV3-beta.1/circuit.wasm');
+
     const auth_z = customFetch('/AuthV2/circuit_final.zkey');
     const mtp_z = customFetch('/credentialAtomicQueryMTPV2/circuit_final.zkey');
     const sig_z = customFetch('/credentialAtomicQuerySigV2/circuit_final.zkey');
+    const v3_z = customFetch(
+      '/credentialAtomicQueryV3-beta.1/circuit_final.zkey',
+    );
 
     const auth_j = customFetch('/AuthV2/verification_key.json');
     const mtp_j = customFetch(
@@ -47,28 +52,37 @@ export class CircuitStorageInstance {
     const sig_j = customFetch(
       '/credentialAtomicQuerySigV2/verification_key.json',
     );
+    const v3_j = customFetch(
+      '/credentialAtomicQueryV3-beta.1/verification_key.json',
+    );
 
     return Promise.all([
       auth_w,
       mtp_w,
       sig_w,
+      v3_w,
       auth_z,
       mtp_z,
       sig_z,
+      v3_z,
       auth_j,
       mtp_j,
       sig_j,
+      v3_j,
     ]).then(
       async ([
         auth_w,
         mtp_w,
         sig_w,
+        v3_w,
         auth_z,
         mtp_z,
         sig_z,
+        v3_z,
         auth_j,
         mtp_j,
         sig_j,
+        v3_j,
       ]) => {
         await this.instanceCS.saveCircuitData(CircuitId.AuthV2, {
           circuitId: 'authV2'.toString(),
@@ -87,6 +101,12 @@ export class CircuitStorageInstance {
           wasm: sig_w,
           provingKey: sig_z,
           verificationKey: sig_j,
+        });
+        await this.instanceCS.saveCircuitData(CircuitId.AtomicQueryV3, {
+          circuitId: 'credentialAtomicQueryV3-beta.1'.toString(),
+          wasm: v3_w,
+          provingKey: v3_z,
+          verificationKey: v3_j,
         });
         console.timeEnd('CircuitStorageInstance.init');
       },

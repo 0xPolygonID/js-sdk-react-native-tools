@@ -19,7 +19,7 @@ export class IdentityService {
       method: core.DidMethod.PolygonId,
       blockchain: core.Blockchain.Polygon,
       seed: seedPhrase,
-      networkId: core.NetworkId.Mumbai,
+      networkId: core.NetworkId.Amoy,
       revocationOpts: {
         type: CredentialStatusType.Iden3ReverseSparseMerkleTreeProof,
         id: RHS_URL,

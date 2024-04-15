@@ -24,7 +24,9 @@ export function HomePage({route, navigation}: any) {
   const [isInited, setIsInited] = useState(false);
   const [credentials, setCredentials] = useState<W3CCredential[]>([]);
   const [circuitsUrl, setCircuitsUrl] = useState<string>(
-    'http://192.168.0.100:3000',
+    // 'http://192.168.0.103:64094',
+    'http://192.168.0.103:53491',
+    // 'http://192.168.0.100:3000',
   );
   const webViewContext = useContext(WebViewContext);
 

@@ -20,8 +20,8 @@ export class ReactNativeZKProver implements IZKProver {
       }
 
       const res = await reactNativeGroth16Verify(
-        zkp.pub_signals,
         zkp.proof,
+        zkp.pub_signals,
         circuitData.verificationKey,
       );
       return res;

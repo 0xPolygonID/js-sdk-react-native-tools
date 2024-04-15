@@ -1,21 +1,19 @@
-import {NativeModules} from 'react-native';
 import {byteDecoder} from '@0xpolygonid/js-sdk';
 import {ProofData, ZKProof} from '@iden3/js-jwz';
 import {fromBigEndian} from '@iden3/js-iden3-core';
-
-const rapidsnark = NativeModules.Rapidsnark;
-
+import {groth16Verify} from '@iden3/react-native-rapidsnark';
 export const reactNativeGroth16Verify = async (
-  pub_signals: string[],
   proof: ProofData,
+  pub_signals: string[],
   verificationKey: Uint8Array,
 ) => {
   try {
-    return await rapidsnark.groth16_verify(
-      JSON.stringify(pub_signals),
+    const res = await groth16Verify(
       JSON.stringify(proof),
+      JSON.stringify(pub_signals),
       byteDecoder.decode(verificationKey),
     );
+    return res;
   } catch (e: any) {
     console.log(e.message);
     return false;
@@ -33,8 +31,8 @@ export async function verifyGroth16<T extends {challenge: bigint}>(
     throw new Error('challenge is not equal to message hash');
   }
   const result = await reactNativeGroth16Verify(
-    proof.pub_signals,
     proof.proof,
+    proof.pub_signals,
     verificationKey,
   );
   return result;

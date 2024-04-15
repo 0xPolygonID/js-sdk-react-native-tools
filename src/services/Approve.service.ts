@@ -31,10 +31,12 @@ export async function approveMethod(urlParam: string) {
   const authRes = await authHandler.handleAuthorizationRequest(_did, msgBytes);
 
   // verify token example how to use
-  const tokenBytes = byteEncoder.encode(authRes.token);
-  const data = await packageMgr.unpack(tokenBytes);
-  console.log('tokenBytes unpack');
-  console.log(data);
+  // const tokenBytes = byteEncoder.encode(authRes.token);
+  // console.log(authRes.token);
+  // console.log('tokenBytes');
+  // const data = await packageMgr.unpack(tokenBytes);
+  // console.log('tokenBytes unpack');
+  // console.log(data);
   // verify token example how to use end
 
   console.log('authRes');
