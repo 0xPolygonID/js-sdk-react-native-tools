@@ -9,6 +9,7 @@
     "start": "react-native start",
     "test": "jest"
   },
+  "license": "MIT or Apache-2.0",
   "dependencies": {
     "@0xpolygonid/js-sdk": "^1.7.5",
     "@iden3/js-crypto": "^1.0.3",
