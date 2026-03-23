@@ -1,9 +1,10 @@
-import {NativeModules} from 'react-native';
+import {Platform} from 'react-native';
+import RNFS from 'react-native-fs';
 import {byteDecoder} from '@0xpolygonid/js-sdk';
 import {ZKProof} from '@iden3/js-jwz';
 import {fromByteArray} from 'react-native-quick-base64';
+import {groth16Prove} from '@iden3/react-native-rapidsnark';
 
-const rapidsnark = NativeModules.Rapidsnark;
 export const reactNativeGroth16Prover = async (
   inputs: Uint8Array,
   provingKey: Uint8Array,
@@ -18,14 +19,22 @@ export const reactNativeGroth16Prover = async (
 
   console.time('rapidsnark');
 
-  const {proof, pub_signals} = await rapidsnark.groth16_prover(
-    fromByteArray(provingKey),
-    calcResult,
-  );
-  console.timeEnd('rapidsnark');
+  const tmpDir =
+    Platform.OS === 'android'
+      ? RNFS.CachesDirectoryPath
+      : RNFS.TemporaryDirectoryPath;
+  const zkeyPath = `${tmpDir}/proving_key_${Date.now()}.zkey`;
 
-  return {
-    proof: JSON.parse(proof),
-    pub_signals: JSON.parse(pub_signals),
-  };
+  try {
+    await RNFS.writeFile(zkeyPath, fromByteArray(provingKey), 'base64');
+    const {proof, pub_signals} = await groth16Prove(zkeyPath, calcResult);
+    console.timeEnd('rapidsnark');
+
+    return {
+      proof: JSON.parse(proof),
+      pub_signals: JSON.parse(pub_signals),
+    };
+  } finally {
+    await RNFS.unlink(zkeyPath).catch(() => {});
+  }
 };

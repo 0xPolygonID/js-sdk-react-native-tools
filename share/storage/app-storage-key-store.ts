@@ -40,4 +40,15 @@ export class AppStoragePrivateKeyStore implements AbstractPrivateKeyStore {
       JSON.stringify(data),
     );
   }
+
+  async list(): Promise<{alias: string; key: string}[]> {
+    const dataStr = await appStorage.getItem(
+      AppStoragePrivateKeyStore.storageKey,
+    );
+    if (!dataStr) {
+      return [];
+    }
+    const data: {id: string; value: string}[] = JSON.parse(dataStr);
+    return data.map(d => ({alias: d.id, key: d.value}));
+  }
 }
