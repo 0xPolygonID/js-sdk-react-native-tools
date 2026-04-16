@@ -58,5 +58,22 @@ target 'jsSdkReactNativeTools' do
       :mac_catalyst_enabled => false
     )
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+
+    # Fix: Clang 18+ (Xcode 16+) treats space before literal operator identifier as an error.
+    # Yoga uses `operator"" _pt` syntax in YGValue.h — suppress the warning for Yoga.
+    # Fix: react-native-rapidsnark specifies iOS 11.0 but the rapidsnark pod requires iOS 12.0.
+    # Raise the deployment target so Swift can import the rapidsnark module.
+    installer.pods_project.targets.each do |target|
+      if target.name == 'Yoga'
+        target.build_configurations.each do |config|
+          config.build_settings['OTHER_CPLUSPLUSFLAGS'] = '$(inherited) -Wno-deprecated-literal-operator'
+        end
+      end
+      if target.name == 'react-native-rapidsnark'
+        target.build_configurations.each do |config|
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+        end
+      end
+    end
   end
 end

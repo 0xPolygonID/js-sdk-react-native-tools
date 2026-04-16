@@ -8,6 +8,11 @@ const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
  */
 const config = {
   resolver: {
+    // Enable package.json `exports` field resolution.
+    // The @iden3/* and @0xpolygonid/js-sdk packages only publish exports (no `main` field).
+    // We put 'browser' first so Metro picks the browser build instead of the Node.js build.
+    unstable_enablePackageExports: true,
+    unstable_conditionNames: ['browser', 'react-native', 'require', 'default'],
     extraNodeModules: {
       crypto: require.resolve('react-native-crypto'),
       // buffer: require.resolve('buffer/'),

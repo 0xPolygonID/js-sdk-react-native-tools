@@ -14,7 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		F350CF422B4C11F60060ABAD /* Rapidsnark.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A34EFF2B47576200FD40A6 /* Rapidsnark.xcframework */; };
+		B5551CD88AD9E93EA610AFED /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6AC96AE157DE8BFDA885C4C8 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,22 +42,10 @@
 		5709B34CF0A7D63546082F79 /* Pods-jsSdkReactNativeTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsSdkReactNativeTools.release.xcconfig"; path = "Target Support Files/Pods-jsSdkReactNativeTools/Pods-jsSdkReactNativeTools.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests.debug.xcconfig"; path = "Target Support Files/Pods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests/Pods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-jsSdkReactNativeTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jsSdkReactNativeTools.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AC96AE157DE8BFDA885C4C8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = jsSdkReactNativeTools/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = jsSdkReactNativeTools/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests.release.xcconfig"; path = "Target Support Files/Pods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests/Pods-jsSdkReactNativeTools-jsSdkReactNativeToolsTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F37A61792B017CDD00369EAA /* librapidsnark.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librapidsnark.a; path = "../../react-native-rapidsnark/ios/librapidsnark.a"; sourceTree = "<group>"; };
-		F37A617A2B017CDD00369EAA /* libfr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfr.a; path = "../../react-native-rapidsnark/ios/libfr.a"; sourceTree = "<group>"; };
-		F37A617B2B017CDD00369EAA /* libfq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfq.a; path = "../../react-native-rapidsnark/ios/libfq.a"; sourceTree = "<group>"; };
-		F37A617C2B017CDD00369EAA /* libgmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmp.a; path = "../../react-native-rapidsnark/ios/libgmp.a"; sourceTree = "<group>"; };
-		F3A34EFF2B47576200FD40A6 /* Rapidsnark.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Rapidsnark.xcframework; path = "../node_modules/@iden3/react-native-rapidsnark/ios/Frameworks/Rapidsnark.xcframework"; sourceTree = "<group>"; };
-		F3A34F022B47595E00FD40A6 /* libfq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfq.a; path = "../../react-native-rapidsnark/ios_xcframework/libs_ios/libfq.a"; sourceTree = "<group>"; };
-		F3A34F032B47595E00FD40A6 /* libfr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfr.a; path = "../../react-native-rapidsnark/ios_xcframework/libs_ios/libfr.a"; sourceTree = "<group>"; };
-		F3A34F042B47595E00FD40A6 /* libgmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmp.a; path = "../../react-native-rapidsnark/ios_xcframework/libs_ios/libgmp.a"; sourceTree = "<group>"; };
-		F3A34F052B47595E00FD40A6 /* librapidsnark.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librapidsnark.a; path = "../../react-native-rapidsnark/ios_xcframework/libs_ios/librapidsnark.a"; sourceTree = "<group>"; };
-		F3A34F062B47595E00FD40A6 /* libgroth16_verify.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgroth16_verify.a; path = "../../react-native-rapidsnark/ios_xcframework/libs_ios/libgroth16_verify.a"; sourceTree = "<group>"; };
-		F3A34F0D2B4759D500FD40A6 /* librapidsnarkmerged.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librapidsnarkmerged.a; path = "../node_modules/@iden3/react-native-rapidsnark/ios/Frameworks/Rapidsnark.xcframework/ios-arm64/librapidsnarkmerged.a"; sourceTree = "<group>"; };
-		F3A34F162B475DBD00FD40A6 /* librapidsnarkmerged.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librapidsnarkmerged.a; path = "../../react-native-rapidsnark/ios/Frameworks/Rapidsnark.xcframework/ios-arm64/librapidsnarkmerged.a"; sourceTree = "<group>"; };
-		F3A34F182B48076100FD40A6 /* Frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Frameworks; path = "../../react-native-rapidsnark/ios/Frameworks"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F350CF422B4C11F60060ABAD /* Rapidsnark.xcframework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-jsSdkReactNativeTools.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,6 +94,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				6AC96AE157DE8BFDA885C4C8 /* PrivacyInfo.xcprivacy */,
 			);
 			name = jsSdkReactNativeTools;
 			sourceTree = "<group>";
@@ -272,6 +260,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				B5551CD88AD9E93EA610AFED /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +507,6 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_ROOT}/../../node_modules/@iden3/react-native-rapidsnark/ios/Frameworks\"",
 					"\"${PODS_ROOT}/Flipper-DoubleConversion/Frameworks\"",
 					"\"${PODS_ROOT}/Flipper-Glog/Frameworks\"",
 					"\"${PODS_ROOT}/OpenSSL-Universal/Frameworks\"",
@@ -703,11 +691,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-Wl",
-					"-ld_classic",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -777,11 +761,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-Wl",
-					"-ld_classic",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
