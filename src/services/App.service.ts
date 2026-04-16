@@ -77,7 +77,7 @@ export class AppService {
       () => provingMethodGroth16AuthV2Instance,
     );
     let packageMgr = await AppService.getPackageMgr(
-      await circuitStorage.loadCircuitData(CircuitId.AuthV2),
+      await circuitStorage.loadCircuitData(CircuitId.AuthV3_8_32),
       proofService.generateAuthV2Inputs.bind(proofService),
       proofService.verifyState.bind(proofService),
     );
