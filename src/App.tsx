@@ -17,7 +17,7 @@ export default function App(): React.ReactElement | null {
     useState<CameraPermissionStatus>();
 
   useEffect(() => {
-    Camera.getCameraPermissionStatus().then(setCameraPermission);
+    setCameraPermission(Camera.getCameraPermissionStatus());
   }, []);
 
   console.log(`Re-rendering Navigator. Camera: ${cameraPermission}`);
